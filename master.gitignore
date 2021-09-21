@@ -16,11 +16,10 @@ package_lock.json
 # extensions
 *.rar
 *.zip
+*.iso
+*.ink
 *.tgz
 *.class
-
-# Binary files
-bin/
 
 # Thumbnails created by windows
 Thumbs.db
