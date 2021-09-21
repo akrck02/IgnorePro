@@ -1,0 +1,12 @@
+# jetbrains
+.idea
+
+# Eclipse stuff
+.eclipse
+.metadata
+
+# extensions
+*.class
+
+# javadoc
+doc/

@@ -4,6 +4,7 @@
 
 # jetbrains
 .idea
+.idea_modules/
 
 # Eclipse stuff
 .eclipse
@@ -19,7 +20,17 @@ package_lock.json
 *.iso
 *.ink
 *.tgz
+.log
+
+# java
 *.class
+
+# python
+.python-version
+__pycache__/
+*.py[cod]
+*$py.class
+.Python
 
 # Thumbnails created by windows
 Thumbs.db
@@ -36,7 +47,7 @@ Thumbs.db
 *.bak
 *.cache
 *.ilk
-.log
+
 [Bb]in
 [Dd]ebug/
 .sbr
