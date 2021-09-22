@@ -1,4 +1,3 @@
-
 # visual studio code
 .vscode
 
@@ -13,24 +12,6 @@
 # Nodejs stuff
 node_modules
 package_lock.json
-
-# extensions
-*.rar
-*.zip
-*.iso
-*.ink
-*.tgz
-.log
-
-# java
-*.class
-
-# python
-.python-version
-__pycache__/
-*.py[cod]
-*$py.class
-.Python
 
 # Thumbnails created by windows
 Thumbs.db
@@ -48,7 +29,7 @@ Thumbs.db
 *.cache
 *.ilk
 
-[Bb]in
+[Bb]in/
 [Dd]ebug/
 .sbr
 obj/

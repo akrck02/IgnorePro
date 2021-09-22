@@ -1,0 +1,9 @@
+# extensions
+*.class
+
+# javadoc
+doc/
+
+# Eclipse stuff
+.eclipse
+.metadata

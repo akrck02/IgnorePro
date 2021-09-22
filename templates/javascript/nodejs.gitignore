@@ -1,6 +1,3 @@
-# visual studio code
-.vscode
-
 # Nodejs stuff
 node_modules
 package_lock.json
