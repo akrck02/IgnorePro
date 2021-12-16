@@ -20,8 +20,8 @@ public class CommandLine {
             try{
                 int output_index = arguments.indexOf("-o");
                 output = arguments.get(output_index + 1);
-            }catch(IndexOutOfBoundsException e){
-                // message
+            } catch(IndexOutOfBoundsException e){
+                System.out.println("ERROR: No output selected");
                 return 0;
             }
         }
@@ -32,8 +32,8 @@ public class CommandLine {
                 int templates_index = arguments.indexOf("-t");
                 String res = arguments.get(templates_index + 1);
                 templates = res.split(",");
-            }catch(IndexOutOfBoundsException e){
-                // message
+            } catch(IndexOutOfBoundsException e){
+                System.out.println("ERROR: No templates selected");
                 return 0;
             }
         }
@@ -47,19 +47,20 @@ public class CommandLine {
 
         for (String template : templates) {
             Ignore temp = Ignore.valueOf(template.toUpperCase(Locale.ROOT));
-            if(temp != null)
-                ignores.add(temp);
+            ignores.add(temp);
         }
 
 
         app.create(output,protocols,ignores);
-
         return 1;
     }
 
     public static void main(String[] args) {
         args = new String[] {"-o","../testing.gitignore","-t","python,java"};
-        CommandLine.start(args);
+        if(CommandLine.start(args) == 1)
+            System.out.println("Success.");
+        else
+            System.out.println("The app finished with an error");
     }
 }
 

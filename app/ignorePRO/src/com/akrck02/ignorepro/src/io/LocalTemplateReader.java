@@ -10,14 +10,24 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
+/**
+ * Local file:// implementation of abstract
+ * reader strategy interface.
+ */
 public class LocalTemplateReader implements Reader{
+
+    /**
+     * Read from disc file
+     * @param url The URL to read from
+     * @return The content of the file
+     */
     @Override
     public String read(String url) throws ReaderException{
 
         try {
             File file = new File(url);
             if (file.exists())
-                return new String(Files.readAllBytes(Paths.get(url)), StandardCharsets.UTF_8);
+                return Files.readString(Paths.get(url));
 
             throw new FileNotFoundException();
         }

@@ -14,8 +14,8 @@ import java.util.*;
 public class App {
 
     private String url;
-    private Map<Protocol,Reader> readers;
-    private Map<Protocol,Writer> writers;
+    private final Map<Protocol,Reader> readers;
+    private final Map<Protocol,Writer> writers;
 
     public App(String url){
         this.url = url;
@@ -26,6 +26,12 @@ public class App {
         this.writers.put(Protocol.FILE,new LocalIgnoreWriter());
     }
 
+    /**
+     * Write a file for the given protocol
+     * @param url The file URL
+     * @param content The content to write
+     * @param protocols The protocol to follow
+     */
     private void write(String url, String content, List<Protocol> protocols){
         for (Protocol protocol: protocols) {
             Writer wr = this.writers.get(protocol);
@@ -34,6 +40,12 @@ public class App {
         }
     }
 
+    /**
+     * Read a file for the given protocol
+     * @param url The file URL
+     * @param protocol The protocol to follow
+     * @return An optional with the result String
+     */
     private Optional<String> read(String url, Protocol protocol){
             Reader rd = this.readers.get(protocol);
             if(rd != null)
@@ -43,18 +55,24 @@ public class App {
     }
 
 
+    /**
+     * Create an ignore file
+     * @param url The url of the file output
+     * @param protocols The protocols to follow
+     * @param ignoreTemplates The templates to mix
+     */
     public void create(String url, List<Protocol> protocols, List<Ignore> ignoreTemplates){
 
         for (Ignore ig: ignoreTemplates) {
 
             StringBuilder builder = new StringBuilder();
-            builder = builder
-                    .append(Constants.TEMPLATE_URLS)
-                    .append(ig.getName().replaceAll(" ", "_"))
-                    .append(Constants.TEMPLATE_EXTENSION);
+            builder.append(Constants.TEMPLATE_URLS)
+                .append(ig.getName().replaceAll(" ", "_"))
+                .append(Constants.TEMPLATE_EXTENSION);
 
             System.out.println(System.getProperty("user.dir"));
             System.out.println("URL: " + new File(builder.toString()).getAbsolutePath());
+
             String content = read(builder.toString(),Protocol.FILE).orElse("");
             content += "\n";
             write(url,content,protocols);
