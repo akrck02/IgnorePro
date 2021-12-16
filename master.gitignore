@@ -35,3 +35,6 @@ Thumbs.db
 obj/
 [Rr]elease/
 _ReSharper*/
+
+# Microsoft office temp files 
+~$*
